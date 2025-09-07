@@ -1,10 +1,15 @@
+import os
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command
 from aiogram.types import Message
 
-BOT_TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"
+# Берём токен из переменной окружения
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN не найден! Установи переменную окружения BOT_TOKEN.")
 
 dp = Dispatcher()
 
